@@ -35,7 +35,7 @@ export default function Header() {
                 {/* Home */}
                 <NavigationMenuItem>
                   <Link
-                    to="/home"
+                    to="/"
                     className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition"
                   >
                     Trang chủ
