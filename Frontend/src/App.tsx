@@ -1,7 +1,8 @@
 
 import "./App.css";
 
-import MainLayout from "./layouts/MainLayout";
+import TestVietmapPage from "@/pages/TestVietmapPage.tsx";
+import MainLayout from "@/layouts/MainLayout.tsx";
 
 function App() {
   return (
