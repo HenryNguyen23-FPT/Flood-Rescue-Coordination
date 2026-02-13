@@ -2,14 +2,18 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {ROUTES} from "@/router/routes.tsx";
 
 export default function Login() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
+
+        navigate(ROUTES.COORDINATE);
     };
 
     return (
@@ -36,7 +40,7 @@ export default function Login() {
                         </CardHeader>
 
                         <CardContent className="p-0">
-                            <form onSubmit={handleLogin} className="space-y-5">
+                            <form className="space-y-5">
                                 <div className="space-y-2">
                                     <Input
                                         id="phone"
@@ -64,6 +68,7 @@ export default function Login() {
                                 <Button
                                     type="submit"
                                     className="w-full h-16 bg-[#54b38a] hover:bg-[#3da076] text-white text-lg font-bold rounded-xl mt-6 shadow-lg transition-all"
+                                    onClick={handleLogin}
                                 >
                                     Đăng nhập với tư cách nhân viên
                                 </Button>
