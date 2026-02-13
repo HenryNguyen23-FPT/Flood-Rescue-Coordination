@@ -1,14 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import "./App.css";
 
-import MainLayout from "./layouts/MainLayout";
+import TestVietmapPage from "@/pages/TestVietmapPage.tsx";
 
 function App() {
   return (
     <div>
-      <MainLayout />
-
+        {<TestVietmapPage />}
     </div>
   );
 }
