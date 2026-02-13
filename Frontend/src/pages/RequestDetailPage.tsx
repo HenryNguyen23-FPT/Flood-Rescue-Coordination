@@ -1,4 +1,3 @@
-import Header from "@/layouts/Header.tsx";
 import {Undo2, Phone, MapPin, Image, Helicopter, Van, Ship} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card.tsx";
@@ -9,6 +8,8 @@ import {useState} from "react";
 import {MapContainer, Marker, TileLayer} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { TeamIcon, UserIcon } from "@/utils/leafletIcon";
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "@/router/routes.tsx";
 
 const rescueTeams: string[] = [
     "Đội cứu hộ A",
@@ -57,27 +58,35 @@ export default function RequestDetailPage() {
     const topButoons =
         "!bg-gray-300 !text-black !font-bold";
 
-    return (
-        <div className="min-h-screen flex flex-col !w-full">
-            <Header role={3} />
+    const navigate = useNavigate();
 
-            <main className="flex-1 pt-25 !w-full bg-white flex flex-col">
+    const handleFullMap = () => {
+        navigate(ROUTES.FULLMAP);
+    };
+
+    return (
+        <div className="flex flex-col w-full h-full">
+            <div className="flex flex-col flex-1 w-full bg-white pt-[4vh]">
                 <div className="flex flex-row flex-[0.5] justify-between items-center
-                px-[2vw] mb-[2vh]">
+            px-[2vw] mb-[2vh]">
                     <div className="flex flex-row gap-[1vw]">
                         <Button className={topButoons}>
-                            <Undo2 className="!w-5 !h-5" strokeWidth={2.5}/>
+                            <Undo2 className="!w-5 !h-5" strokeWidth={2.5} />
                             Quay Lại
                         </Button>
-                        <Button className={topButoons}>Hộp thoại</Button>
+                        <Button className={topButoons}>
+                            Hộp thoại
+                        </Button>
                     </div>
-                    <Button className="!bg-gray-300 !text-black !font-bold">
+                    <Button className="!bg-gray-300 !text-black !font-bold"
+                    onClick={handleFullMap}>
                         Toàn bản đồ
                     </Button>
                 </div>
-                <Solving/>
-            </main>
+                <Solving />
+            </div>
         </div>
+
     );
 }
 

@@ -5,4 +5,7 @@ export const ROUTES = {
   MAP: '/map',
   CONTACT: '/contact',
   GUIDE: '/guide',
+  COORDINATE: '/coordination',
+  REQUESTDETAILS: 'requestdetails',
+  FULLMAP: 'fullmap',
 } as const;

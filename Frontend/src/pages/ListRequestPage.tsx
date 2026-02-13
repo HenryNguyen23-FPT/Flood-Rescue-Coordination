@@ -1,4 +1,3 @@
-import Header from "@/layouts/Header.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {
     Table,
@@ -9,6 +8,8 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { ClipboardPlus, RefreshCcw, Clock, SquareCheck, CircleX, SlidersVertical } from 'lucide-react';
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "@/router/routes.tsx";
 
 export type RescueRequest = {
     id: number;
@@ -79,13 +80,9 @@ const fakeRequests: RescueRequest[] = [
 
 export default function ListRequestPage() {
     return (
-        <div className="min-h-screen flex flex-col !w-full">
-            <Header role={3} />
-
-            <main className="flex-1 pt-20 !w-full bg-blue-100 flex flex-col">
-                <Filters />
-                <Requests />
-            </main>
+        <div className="flex flex-col w-full pt-[3vh]">
+            <Filters />
+            <Requests />
         </div>
     );
 }
@@ -96,7 +93,7 @@ export function Filters(){
         "flex flex-col items-center justify-center gap-2";
 
     return (
-        <div className="!w-full bg-white flex-[2] !pt-[2vh]
+        <div className="!w-full bg-white flex-[2] !pt-[2vh] !pb-[1vh]
         flex flex-row justify-center items-center gap-10">
             <Button className={filterButton}>
                 <ClipboardPlus className="!w-10 !h-10"/>
@@ -123,6 +120,12 @@ export function Filters(){
 }
 
 export function Requests(){
+    const navigate = useNavigate();
+
+    const handleOpenRequest = () => {
+        navigate(ROUTES.REQUESTDETAILS);
+    }
+
     return (
         <div className="!w-full bg-white flex-[8] p-4
         flex flex-col !items-center justify-start">
@@ -142,7 +145,7 @@ export function Requests(){
 
                 <TableBody className="text-center cursor-pointer">
                     {fakeRequests.map((r) => (
-                        <TableRow key={r.id}>
+                        <TableRow key={r.id} onClick={handleOpenRequest}>
                             <TableCell className="font-semibold">0{r.id}</TableCell>
                             <TableCell>{r.phone}</TableCell>
                             <TableCell>{r.rescuer}</TableCell>

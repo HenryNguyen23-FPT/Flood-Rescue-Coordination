@@ -1,13 +1,12 @@
 
 import "./App.css";
 
-import TestVietmapPage from "@/pages/TestVietmapPage.tsx";
-import MainLayout from "@/layouts/MainLayout.tsx";
+import {Outlet} from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <MainLayout />
+      <Outlet />
     </div>
   );
 }
