@@ -1,7 +1,8 @@
 import { Phone, Mail, Globe, MapPin, PhoneCall } from 'lucide-react';
-
+import Footer from '@/layouts/Footer';
 export default function ContactPage() {
   return (
+    <div>
     <div className="min-h-screen bg-white pt-24 pb-10 px-4 w-full flex justify-center">
       <div className="w-full max-w-2xl flex flex-col gap-10">
         
@@ -93,6 +94,9 @@ export default function ContactPage() {
         </div>
 
       </div>
+      
+    </div>
+    <Footer/>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Search, ArrowRight, Loader2, FileQuestion } from 'lucide-react'; 
 import { Button } from '@/components/ui/button';
+import Footer from '@/layouts/Footer';
 
-// --- PHẦN 1: INTERFACES (GIỮ NGUYÊN) ---
 interface RescueTeam {
   id: string;
   captain: string;
@@ -173,6 +173,7 @@ export default function FindRequestPage() {
   };
 
   return (
+    <div>
     <div className="min-h-screen bg-white pt-24 pb-10 px-4 flex flex-col items-center w-full mt-15">
       <div className="w-full max-w-3xl border-2 rounded-lg overflow-hidden mb-12 shadow-sm">
         <div className="bg-blue-500 py-6 text-center text-white">
@@ -202,6 +203,8 @@ export default function FindRequestPage() {
         </div>
       </div>
       {renderContent()}
+    </div>
+    <Footer/>
     </div>
   );
 }

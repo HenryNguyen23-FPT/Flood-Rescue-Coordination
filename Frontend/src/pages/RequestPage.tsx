@@ -168,7 +168,7 @@ export default function RequestPage() {
                 }))
               }
             />
-            <Label>Tọa độ</Label>
+            <Label>Tọa độ (Tùy chọn)</Label>
             <input
               type="text"
               className="mt-2 w-full rounded-md border px-3 py-2 mb-2"
@@ -302,6 +302,13 @@ export default function RequestPage() {
           style={{ width: "100%", height: "100%" }}
         />
       </div>
+      <button 
+          type="button"
+          onClick={handleGetLocation} 
+          className="absolute bottom-10 right-4 z-10 p-3 bg-white rounded-lg shadow-md hover:bg-gray-50 border border-gray-200 group transition-all"
+          title="Lấy vị trí hiện tại"
+      ><Locate className="w-6 h-6 text-blue-600 group-hover:text-blue-700"/>
+      </button>
     </div>
   )
 }

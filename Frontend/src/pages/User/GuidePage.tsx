@@ -1,7 +1,8 @@
 import { User, Headphones, LifeBuoy, ShieldCheck } from 'lucide-react';
-
+import Footer from '@/layouts/Footer';
 export default function GuidePage() {
   return (
+    <div>
     <div className="min-h-screen bg-white pt-24 pb-10 px-4 w-full flex justify-center">
       <div className="w-full max-w-3xl flex flex-col gap-10">
         
@@ -122,6 +123,8 @@ export default function GuidePage() {
         </div>
 
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 }
