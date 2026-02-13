@@ -3,6 +3,7 @@ package com.rescue.backend.DTOS.citizen.request;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public record RescueRequest (
         String type,
@@ -13,7 +14,7 @@ public record RescueRequest (
         String name,
         String phone,
         String additionalLink,
-        String imgUrl
+        List<MultipartFile> images
 ) {
 
 }
