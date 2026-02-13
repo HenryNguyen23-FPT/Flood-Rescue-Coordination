@@ -1,12 +1,12 @@
 
 import "./App.css";
 
-import MainLayout from "./layouts/MainLayout";
+import {Outlet} from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <MainLayout />
+      <Outlet />
     </div>
   );
 }
