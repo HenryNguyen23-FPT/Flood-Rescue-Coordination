@@ -8,7 +8,7 @@ function MainLayout() {
       
       <Header />
 
-      <main className="flex-1 overflow-hidden pt-20">
+      <main className="flex-1 overflow-hidden ">
         <Outlet />
       </main>
 

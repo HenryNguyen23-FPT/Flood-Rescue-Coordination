@@ -6,7 +6,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { Image } from "lucide-react"
+import { Image,Locate } from "lucide-react"
 
 export default function RequestPage() {
   const [form, setForm] = useState({
@@ -122,9 +122,9 @@ export default function RequestPage() {
   }
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex h-screen w-full pt-20 overflow-hidden">
       {/* LEFT FORM */}
-      <div className="w-[420px] bg-white p-6 shadow-md overflow-y-auto">
+      <div className="w-[420px] bg-white p-6 shadow-md overflow-y-auto h-full pb-10 z-10">
         <h1 className="text-lg font-bold mb-4 text-center">
           Gửi thông tin cứu hộ
         </h1>
@@ -133,7 +133,7 @@ export default function RequestPage() {
 
           {/* Phân loại */}
           <div>
-            <Label>Phân loại</Label>
+            <Label>Phân loại <span className="text-red-500">*</span></Label>
             <div className="mt-2 flex gap-2">
               {["Nhu yếu phẩm", "Cứu hộ", "Khác"].map((item) => (
                 <button
@@ -156,10 +156,22 @@ export default function RequestPage() {
 
           {/* Vị trí */}
           <div>
-            <Label>Vị trí</Label>
+            <Label>Địa chỉ <span className="text-red-500">*</span></Label>
             <input
               type="text"
-              className="mt-2 w-full rounded-md border px-3 py-2"
+              className="mt-2 w-full rounded-md border px-3 py-2 mb-2"
+              value={form.address}
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  address: e.target.value,
+                }))
+              }
+            />
+            <Label>Tọa độ</Label>
+            <input
+              type="text"
+              className="mt-2 w-full rounded-md border px-3 py-2 mb-2"
               value={form.address}
               onChange={(e) =>
                 setForm((prev) => ({
@@ -179,7 +191,7 @@ export default function RequestPage() {
 
           {/* Mô tả */}
           <div>
-            <Label>Tình trạng</Label>
+            <Label>Tình trạng <span className="text-red-500">*</span></Label>
             <textarea
               rows={3}
               className="mt-2 w-full rounded-md border px-3 py-2"
@@ -195,7 +207,7 @@ export default function RequestPage() {
 
           {/* Phone */}
           <div>
-            <Label>Số điện thoại</Label>
+            <Label>Số điện thoại <span className="text-red-500">*</span></Label>
             <input
               type="text"
               className="mt-2 w-full rounded-md border px-3 py-2"
@@ -211,7 +223,7 @@ export default function RequestPage() {
 
           {/* Name */}
           <div>
-            <Label>Họ và tên</Label>
+            <Label>Họ và tên <span className="text-red-500">*</span></Label>
             <input
               type="text"
               className="mt-2 w-full rounded-md border px-3 py-2"
@@ -227,7 +239,7 @@ export default function RequestPage() {
 
           {/* Upload ảnh */}
           <div>
-            <Label>Hình ảnh hiện trường</Label>
+            <Label>Hình ảnh hiện trường <span className="text-red-500">*</span></Label>
 
             {preview ? (
               <div className="relative mt-2">
@@ -275,7 +287,7 @@ export default function RequestPage() {
 
           <button
             type="submit"
-            className="w-full rounded-md bg-red-500 py-3 font-semibold text-white hover:bg-red-600"
+            className="w-full rounded-md bg-green-500 py-3 font-semibold text-white hover:bg-green-600"
           >
             Gửi yêu cầu
           </button>
@@ -283,11 +295,11 @@ export default function RequestPage() {
       </div>
 
       {/* RIGHT MAP */}
-      <div className="flex-1 relative min-h-0">
+      <div className="flex-1 relative h-full">
         <div
           ref={mapContainer}
           className="absolute inset-0"
-          style={{ width: "100%", height: "100vh" }}
+          style={{ width: "100%", height: "100%" }}
         />
       </div>
     </div>
