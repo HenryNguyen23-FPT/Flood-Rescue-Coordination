@@ -10,8 +10,8 @@ import java.sql.SQLException;
  */
 public class DBUtils {
     private static final String DB_NAME = "Flood-Rescue-Coordination";
-    private static final String USER = "sa";
-    private static final String PASSWORD = "12345";
+    private static final String USER = System.getenv("DB_USER");
+    private static final String PASSWORD = System.getenv("DB_PASSWORD");
     
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Connection conn = null;
