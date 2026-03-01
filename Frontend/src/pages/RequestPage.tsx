@@ -24,7 +24,7 @@ export default function RequestPage() {
   const mapContainer = useRef<HTMLDivElement | null>(null)
   const markerRef = useRef<vietmapgl.Marker | null>(null)
 
-  const { map, mapLoaded, mount, unmount } = useVietMap()
+  const { map, mapLoaded: _mapLoaded, mount, unmount } = useVietMap()
 
   // ================= MAP (mount vào container của page) =================
   useEffect(() => {

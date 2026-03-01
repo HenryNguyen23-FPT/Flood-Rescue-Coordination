@@ -4,33 +4,61 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {Link, useNavigate} from 'react-router-dom';
 import {ROUTES} from "@/router/routes.tsx";
+import Logo from "@/assets/Logo.png";
 
 export default function Login() {
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
 
-        navigate(ROUTES.COORDINATE);
+        console.log("Phone: " + phoneNumber);
+        console.log("Name: " + name);
+
+        fetch("api/checkpass", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                phone: phoneNumber,
+                name: name
+            })
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log("Check result:", result);
+
+                if (result === true) {
+                    alert("Login OK");
+                    navigate(ROUTES.COORDINATE);
+                } else {
+                    alert("Login Failed");
+                }
+            })
+            .catch(err => console.error(err));
+
+        setPhoneNumber("");
+        setName("");
     };
 
     return (
         <div className="w-full min-h-screen grid lg:grid-cols-2">
-            
+
             {/* --- LEFT SIDE --- */}
             <div className="flex flex-col h-full">
                 <div className="flex h-20 px-4 py-4 shrink-0">
                     <Link to="/">
                         <img
-                            src="/Logo.png"
+                            src={Logo}
                             alt="Cứu Hộ Logo"
                             className="w-auto h-12 cursor-pointer hover:opacity-90 transition-opacity"
                         />
                     </Link>
                 </div>
-            
+
                 <div className="flex-1 flex justify-center w-full pt-24">
                     <Card className="w-full max-w-[500px] border-0 shadow-none">
                         <CardHeader className="text-center p-0 mb-10">
@@ -42,24 +70,24 @@ export default function Login() {
                         <CardContent className="p-0">
                             <form className="space-y-5">
                                 <div className="space-y-2">
+                                    <div className="space-y-2 mt-6">
+                                        <Input
+                                            id="name"
+                                            type="text"
+                                            placeholder="Họ và tên"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            required
+                                            className="h-16 bg-gray-200 border-0 rounded-xl px-5 text-lg text-black font-bold placeholder:text-gray-400 placeholder:font-bold focus-visible:ring-2 focus-visible:ring-[#54b38a] transition-all"
+                                        />
+                                    </div>
+
                                     <Input
                                         id="phone"
                                         type="tel"
                                         placeholder="Số điện thoại"
                                         value={phoneNumber}
                                         onChange={(e) => setPhoneNumber(e.target.value)}
-                                        required
-                                        className="h-16 bg-gray-200 border-0 rounded-xl px-5 text-lg text-black font-bold placeholder:text-gray-400 placeholder:font-bold focus-visible:ring-2 focus-visible:ring-[#54b38a] transition-all"
-                                    />
-                                </div>
-
-                                <div className="space-y-2 mt-6">
-                                    <Input
-                                        id="password"
-                                        type="password"
-                                        placeholder="Mật khẩu"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
                                         required
                                         className="h-16 bg-gray-200 border-0 rounded-xl px-5 text-lg text-black font-bold placeholder:text-gray-400 placeholder:font-bold focus-visible:ring-2 focus-visible:ring-[#54b38a] transition-all"
                                     />

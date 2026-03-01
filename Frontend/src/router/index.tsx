@@ -10,8 +10,8 @@ import GuidePage from '@/pages/User/GuidePage';
 import ListRequestPage from "@/pages/Coordinator/ListRequestPage.tsx";
 import RequestDetailPage from "@/pages/Coordinator/RequestDetailPage.tsx";
 import FullMapPage from "@/pages/Coordinator/FullMapPage.tsx";
-import ChatBox from "@/layouts/ChatBox.tsx";
 import TestChatBox from "@/pages/TestChatBox.tsx";
+import ChatPage from "@/pages/Coordinator/ChatPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +55,10 @@ export const router = createBrowserRouter([
                 path: ROUTES.REQUESTDETAILS,
                 element: <RequestDetailPage/>,
             },
+            {
+                path: ROUTES.CONTACTBOX,
+                element: <ChatPage/>,
+            }
         ],
     },
     {
@@ -65,4 +69,8 @@ export const router = createBrowserRouter([
         path: ROUTES.TESTCHATBOX,
         element: <TestChatBox/>
     }
-]);
+],
+    {
+        basename: "/Backend",
+    }
+    );

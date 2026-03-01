@@ -48,7 +48,7 @@ export default function ChatBox({ title, senderName, messages, setMessages, clas
     };
 
     return (
-        <div className={`flex flex-col w-full h-full ${className}`}>
+        <div className={`flex flex-col ${className}`}>
 
             {/* Header */}
             <div className="flex items-center justify-center h-[15%] max-h-[8vh] min-h-[5vh] bg-black text-white font-bold text-[1.3em]">
@@ -102,19 +102,6 @@ function ChatInput({ onSend }: ChatInputProps) {
 
     return (
         <div className="flex items-center gap-[0.6em] px-[1em] py-[0.6em] border-t bg-white">
-
-            {/*<Input*/}
-            {/*    value={value}*/}
-            {/*    onChange={(e) => setValue(e.target.value)}*/}
-            {/*    onKeyDown={(e) => {*/}
-            {/*        if (e.key === "Enter") {*/}
-            {/*            e.preventDefault();*/}
-            {/*            handleSend();*/}
-            {/*        }*/}
-            {/*    }}*/}
-            {/*    placeholder="Nhập tin nhắn tại đây..."*/}
-            {/*    className="flex-1 bg-gray-100 border-none focus-visible:ring-0 text-[0.95em]"*/}
-            {/*/>*/}
 
             <Textarea
                 value={value}

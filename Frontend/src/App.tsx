@@ -1,13 +1,13 @@
-
-import "./App.css";
-
-import MainLayout from "./layouts/MainLayout";
+import { RouterProvider } from "react-router-dom"
+import { MapProvider } from "@/lib/MapProvider"
+import { router } from "./router"
 
 function App() {
-  return (
-    <div>
-      <MainLayout role={1}/>
-    </div>
-  );
+    return (
+        <MapProvider>
+            <RouterProvider router={router} />
+        </MapProvider>
+    )
 }
-export default App;
+
+export default App

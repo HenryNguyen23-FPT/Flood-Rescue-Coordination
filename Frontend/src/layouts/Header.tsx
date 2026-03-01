@@ -3,6 +3,7 @@ import { Menu, X, CircleUserRound, Bell } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu';
+import Logo from '@/assets/Logo.png'
 
 export default function Header({ role }: { role: number }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,9 +22,9 @@ export default function Header({ role }: { role: number }) {
         />
       );
     case 2:
-      return <MngHeader />;
+      return <ManagerHeader />;
     case 3:
-      return <CoordHeader noty={false} />;
+      return <CoordinatorHeader noty={false} />;
     default:
       return null;
   }
@@ -31,7 +32,7 @@ export default function Header({ role }: { role: number }) {
 
 /* ================= COORD HEADER ================= */
 
-export function CoordHeader({ noty }: { noty: boolean }) {
+export function CoordinatorHeader({ noty }: { noty: boolean }) {
   const logout =
     "!text-gray-200 !hover:text-gray-200 font-bold ml-[0.5vw] cursor-pointer";
 
@@ -103,7 +104,7 @@ export function UserHeader({
 
           <Link to="/">
             <img
-              src="/Logo.png"
+              src={Logo}
               alt="Flood Rescue Logo"
               className="h-12 w-auto cursor-pointer"
             />
@@ -181,6 +182,6 @@ export function UserHeader({
 
 /* ================= MANAGER HEADER ================= */
 
-export function MngHeader() {
+export function ManagerHeader() {
   return <></>;
 }

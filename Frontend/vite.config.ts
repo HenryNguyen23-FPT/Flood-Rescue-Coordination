@@ -4,7 +4,8 @@ import tailwindcss from "@tailwindcss/vite"
 import path from "path"
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+    base: "/Backend/",
+    plugins: [react(), tailwindcss()],
 
   resolve: {
     alias: {
@@ -18,4 +19,12 @@ export default defineConfig({
   optimizeDeps: {
     include: ["@vietmap/vietmap-gl-js"],
   },
+    server: {
+        proxy: {
+            "/api": {
+                target: "http://localhost:8080/Backend",
+                changeOrigin: true,
+            }
+        }
+    }
 })

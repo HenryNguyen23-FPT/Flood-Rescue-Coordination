@@ -51,6 +51,10 @@ export default function RequestDetailPage() {
         navigate(ROUTES.FULLMAP);
     };
 
+    const handleOpenChat = () => {
+        navigate(ROUTES.CONTACTBOX);
+    }
+
     return (
         <div className="flex flex-col w-full h-full">
             <div className="flex flex-col flex-1 w-full bg-white pt-[6vh]">
@@ -61,7 +65,7 @@ export default function RequestDetailPage() {
                             <Undo2 className="!w-5 !h-5" strokeWidth={2.5} />
                             Quay Lại
                         </Button>
-                        <Button className={topButoons}>
+                        <Button className={topButoons} onClick={handleOpenChat}>
                             Hộp thoại
                         </Button>
                     </div>
