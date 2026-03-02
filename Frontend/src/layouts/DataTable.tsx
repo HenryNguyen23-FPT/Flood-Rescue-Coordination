@@ -4,7 +4,7 @@ import React from "react";
 type CommonTableProps<T> = {
     columns: string[];
     data: T[];
-    renderRow: (item: T) => React.ReactNode;
+    renderRow: (item: T, idx: number) => React.ReactNode;
 };
 
 export function CommonTable<T>({
@@ -23,9 +23,9 @@ export function CommonTable<T>({
             </TableHeader>
 
             <TableBody className="text-center cursor-pointer">
-                {data.map((item, index) => (
-                    <React.Fragment key={index}>
-                        {renderRow(item)}
+                {data.map((item, idx) => (
+                    <React.Fragment key={idx}>
+                        {renderRow(item, idx)}
                     </React.Fragment>
                 ))}
             </TableBody>

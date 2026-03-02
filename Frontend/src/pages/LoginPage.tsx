@@ -17,28 +17,31 @@ export default function Login() {
         console.log("Phone: " + phoneNumber);
         console.log("Name: " + name);
 
-        fetch("api/checkpass", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                phone: phoneNumber,
-                name: name
-            })
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log("Check result:", result);
+        // fetch("api/checkpass", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         phone: phoneNumber,
+        //         name: name
+        //     })
+        // })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         console.log("Check result:", result);
+        //
+        //         if (result === true) {
+        //             alert("Login OK");
+        //             navigate(ROUTES.COORDINATE);
+        //         } else {
+        //             alert("Login Failed");
+        //         }
+        //     })
+        //     .catch(err => console.error(err));
 
-                if (result === true) {
-                    alert("Login OK");
-                    navigate(ROUTES.COORDINATE);
-                } else {
-                    alert("Login Failed");
-                }
-            })
-            .catch(err => console.error(err));
+        alert("Login OK");
+        navigate(ROUTES.COORDINATE);
 
         setPhoneNumber("");
         setName("");

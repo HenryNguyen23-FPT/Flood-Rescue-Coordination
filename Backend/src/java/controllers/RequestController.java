@@ -4,13 +4,15 @@
  */
 package controllers;
 
-import repositories.UserDAO;
-import models.UserDTO;
+import java.util.List;
+import models.PageRequestDTO;
+import models.RequestSummaryDTO;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import repositories.RequestDAO;
 
 /**
  *
@@ -20,11 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 @RequestMapping("/api")
-public class LoginController {
-    
-    @PostMapping("/checkpass")
-    public boolean checkPassword(@RequestBody UserDTO user ) {
-        UserDAO userDao = new UserDAO();
-        return userDao.checkLogin(user.getName(), user.getPhone());
+public class RequestController {
+    @PostMapping("/listRequest")
+    public List<RequestSummaryDTO> takeListRequest(@RequestBody PageRequestDTO pageRequest){
+        RequestDAO requestDao = new RequestDAO();
+        return requestDao.takeListRequest(pageRequest.getPageNumber(), pageRequest.getPageSize());
     }
 }

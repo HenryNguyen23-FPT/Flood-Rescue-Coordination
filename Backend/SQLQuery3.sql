@@ -1,4 +1,4 @@
-﻿CREATE DATABASE RescueSystem;
+﻿CREATE DATABASE Flood-Rescue-Coordination;
 GO
 
 USE RescueSystem;
